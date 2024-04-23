@@ -39,7 +39,6 @@ order by TotalDeathCount desc
 Create View PercentPopulationVaccinated as
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
 , SUM(CONVERT(int,vac.new_vaccinations)) OVER (Partition by dea.Location Order by dea.location, dea.Date) as RollingPeopleVaccinated
---, (RollingPeopleVaccinated/population)*100
 From SQLPortfolio..CovidDeaths dea
 Join SQLPortfolio..CovidVaccinations vac
 	On dea.location = vac.location
