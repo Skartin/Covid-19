@@ -67,7 +67,6 @@ JOIN
 
 
 -- Total Population vs Vaccinations
--- Shows Percentage of Population that has recieved at least one Covid Vaccine
 SELECT 
     dea.continent, 
     dea.location, 
