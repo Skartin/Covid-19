@@ -7,7 +7,7 @@ Skills used: Joins, Aggregate Functions, Creating Views, Converting Data Types
 */
 
 -- Total Cases vs Total Deaths vs total vaccinations
-Select Location, date, total_cases, total_vaccinations,
+Select Location, date, total_cases, total_vaccinations
 From SQLPortfolio..CovidDeaths
 Where continent is not null 
 order by 1,2
