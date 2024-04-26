@@ -77,7 +77,7 @@ SELECT
 FROM 
     CovidDeaths dea
 JOIN 
-    CovidVanccinations vac ON dea.location = vac.location
+    CovidVaccinations vac ON dea.location = vac.location
                            AND dea.date = vac.date
 WHERE 
     dea.continent IS NOT NULL 
