@@ -66,20 +66,17 @@ JOIN
     coviddeaths d ON v.date = d.date;
 
 
--- Total Population vs Vaccinations
-SELECT 
-    dea.continent, 
-    dea.location, 
-    dea.date, 
-    dea.population, 
-    vac.new_vaccinations,
-    SUM(vac.new_vaccinations) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.date) as RollingPeopleVaccinated
+-- Total Population vs Vaccinations by Country
+SELECT
+	dea.continent AS Continent, 
+	dea.location AS Country, 
+	dea.population AS Population, 
+	vac.total_vaccinations AS Vaccination
 FROM 
-    CovidDeaths dea
+	CovidDeaths dea
 JOIN 
-    CovidVaccinations vac ON dea.location = vac.location
-                           AND dea.date = vac.date
+	CovidVaccinations vac ON dea.location = vac.location
 WHERE 
-    dea.continent IS NOT NULL 
-ORDER BY 
-    2, 3;
+	dea.continent IS NOT NULL 
+GROUP BY 
+	1,2
