@@ -55,28 +55,24 @@ where continent is not null
 order by 1,2
 
 
---Retrieve the total cases, total tests, and date for both vaccinations and deaths that occurred on the same date.
+--Retrieve the total deaths by country
 SELECT 
-    d.total_cases, 
-    v.total_tests,
-    v.date
+    d.location AS country,
+    d.total_deaths AS total_deaths
 FROM 
-    CovidVanccinations v
-JOIN 
-    coviddeaths d ON v.date = d.date;
+    coviddeaths d
+WHERE 
+    d.date = '2021-04-30' 
+GROUP by d.location
 
 
 -- Total Population vs Vaccinations by Country
 SELECT
-	dea.continent AS Continent, 
-	dea.location AS Country, 
-	dea.population AS Population, 
+	vac.continent AS Continent, 
+	vac.location AS Country, 
 	vac.total_vaccinations AS Vaccination
 FROM 
-	CovidDeaths dea
-JOIN 
-	CovidVaccinations vac ON dea.location = vac.location
+	CovidVaccinations vac
 WHERE 
-	dea.continent IS NOT NULL 
-GROUP BY 
-	1,2
+	vac.continent IS NOT NULL  AND vac.date IS "4/30/21"
+	GROUP by vac.location
