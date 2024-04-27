@@ -58,12 +58,13 @@ order by 1,2
 --Retrieve the total deaths by country
 SELECT 
     d.location AS country,
-    d.total_deaths AS total_deaths
+    sum(d.new_deaths)AS total_deaths
 FROM 
     coviddeaths d
 WHERE 
-    d.date = '2021-04-30' 
+    d.continent IS NOT NULL 
 GROUP by d.location
+
 
 
 -- Total Population vs Vaccinations by Country
