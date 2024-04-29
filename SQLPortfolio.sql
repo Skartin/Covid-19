@@ -12,7 +12,7 @@ From SQLPortfolio..CovidDeaths
 Where continent is not null 
 order by 1,2
 
--- Query to retrieve daily new cases for a specific country:
+-- Query to retrieve daily new cases for The United States:
 SELECT DISTINCT
     date,
     new_cases
@@ -22,6 +22,7 @@ WHERE
     location = 'United States'
 ORDER BY 
     date;
+
 
 
 -- Total Cases vs Population
