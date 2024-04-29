@@ -12,6 +12,17 @@ From SQLPortfolio..CovidDeaths
 Where continent is not null 
 order by 1,2
 
+-- Query to retrieve daily new cases for a specific country:
+SELECT DISTINCT
+    date,
+    new_cases
+FROM 
+    CovidDeaths
+WHERE 
+    location = 'United States'
+ORDER BY 
+    date;
+
 
 -- Total Cases vs Population
 Select Location, date, Population, total_cases
